@@ -23,6 +23,18 @@ function createTimeInEvent(employee, dateStamp){
   });
   return employee;
 }
+
+function createTimeOutEvent(employee, dateStamp){
+  const [date, time] = dateStamp.split(" ");
+
+  employee.timeOutEvents.push({
+    type:"TimeOut",
+    date: date,
+    hour: parseInt(time)
+  });
+  return employee;
+  
+}
 function getDateObjFromDateStamp(dateStamp){
   const [date, time] = dateStamp.split(" ");
   const [year, month, day] = date.split("-");
