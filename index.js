@@ -8,3 +8,6 @@ function createEmployeeRecord(data){
     timeOutEvents:[]
   };
 }
+function createEmployeeRecords(employees){
+  return employees.map((employee)=>createEmployeeRecord(employee));
+}
