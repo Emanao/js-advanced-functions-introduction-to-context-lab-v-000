@@ -13,8 +13,6 @@ function createEmployeeRecords(employees){
 }
 function createTimeInEvent(employee, dateStamp){
   const [date, time] = dateStamp.split(" ");
-  // const dateObj = getDateObjFromDateStamp(dateStamp);
-  // console.log(dateObj);
 
   employee.timeInEvents.push({
     type:"TimeIn",
@@ -33,7 +31,13 @@ function createTimeOutEvent(employee, dateStamp){
     hour: parseInt(time)
   });
   return employee;
-  
+
+}
+
+function hoursWorkedOnDate(employee, date){
+  const timeIn = employee.timeInEvents.find(elem=>elem.date ===date).hour;
+  const timeOut = employee.timeOutEvents.find(elem=>elem.date ===date).hour;
+  return (timeOut-timeIn)/100;
 }
 function getDateObjFromDateStamp(dateStamp){
   const [date, time] = dateStamp.split(" ");
