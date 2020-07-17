@@ -39,6 +39,11 @@ function hoursWorkedOnDate(employee, date){
   const timeOut = employee.timeOutEvents.find(elem=>elem.date ===date).hour;
   return (timeOut-timeIn)/100;
 }
+
+function wagesEarnedOnDate(employee,date){
+  return hoursWorkedOnDate(employee,date)*employee.payPerHour;
+}
+
 function getDateObjFromDateStamp(dateStamp){
   const [date, time] = dateStamp.split(" ");
   const [year, month, day] = date.split("-");
