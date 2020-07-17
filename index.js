@@ -35,22 +35,26 @@ function createTimeOutEvent(employee, dateStamp){
 }
 
 function hoursWorkedOnDate(employee, date){
-  const timeIn = employee.timeInEvents.find(elem=>elem.date ===date).hour;
-  const timeOut = employee.timeOutEvents.find(elem=>elem.date ===date).hour;
-  return (timeOut-timeIn)/100;
+  const timeIn = employee.timeInEvents.find(elem=>elem.date ===date).hour/100;
+  const timeOut = employee.timeOutEvents.find(elem=>elem.date ===date).hour/100;
+  return (timeOut-timeIn);
 }
 
-function wagesEarnedOnDate(employee,date){
+function wagesEarnedOnDate(employee, date){
   return hoursWorkedOnDate(employee,date)*employee.payPerHour;
 }
 
 function allWagesFor(employee){
-  return employee
+  const timeInEvents = employee.timeInEvents;
+  const  allWagesFor= timeInEvents.map(timeEvent=>wagesEarnedOnDate(employee,timeEvent.date)).reduce((accu,wage)=>accu +=wage);
+  return allWagesFor;
 }
 
-function findEmployeeByFirstName(srcArray, firstName){
-  return srcArray.find(employee.firstName = firstName);
+function findEmployeeByFirstName(employees, firstName){
+  return employees.find(employee.firstName = firstName);
 }
+
+
 function getDateObjFromDateStamp(dateStamp){
   const [date, time] = dateStamp.split(" ");
   const [year, month, day] = date.split("-");
