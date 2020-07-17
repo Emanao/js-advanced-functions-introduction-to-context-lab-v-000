@@ -35,9 +35,9 @@ function createTimeOutEvent(employee, dateStamp){
 }
 
 function hoursWorkedOnDate(employee, date){
-  const timeIn = employee.timeInEvents.find(elem=>elem.date ===date).hour/100;
-  const timeOut = employee.timeOutEvents.find(elem=>elem.date ===date).hour/100;
-  return (timeOut-timeIn);
+  const timeIn = employee.timeInEvents.find(elem=>elem.date ===date).hour;
+  const timeOut = employee.timeOutEvents.find(elem=>elem.date ===date).hour;
+  return (timeOut-timeIn)/100;
 }
 
 function wagesEarnedOnDate(employee, date){
