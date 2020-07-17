@@ -54,11 +54,6 @@ function findEmployeeByFirstName(employees, firstName){
   return employees.find(employee.firstName = firstName);
 }
 
-
-function getDateObjFromDateStamp(dateStamp){
-  const [date, time] = dateStamp.split(" ");
-  const [year, month, day] = date.split("-");
-  const [hour, min] = time.split("-");
-  return new Date(Date.UTC(year,month,day,hour,min));
-
+function calculatePayroll(employees){
+  return employees.reduce((accu,employee) => accu += allWagesFor(employee));
 }
