@@ -51,7 +51,7 @@ function allWagesFor(employee){
 }
 
 function findEmployeeByFirstName(employees, firstName){
-  return employees.find(employee.firstName = firstName);
+  return employees.find(employee.firstName === firstName);
 }
 
 function calculatePayroll(employees){
