@@ -55,5 +55,5 @@ function findEmployeeByFirstName(employees, firstName){
 }
 
 function calculatePayroll(employees){
-  return employees.reduce((accu,employee) => accu += allWagesFor(employee));
+  return employees.map((employee) => allWagesFor(employee)).reduce((accu,wage)=>accu += wage);
 }
