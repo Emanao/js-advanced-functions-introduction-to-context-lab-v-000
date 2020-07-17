@@ -44,6 +44,13 @@ function wagesEarnedOnDate(employee,date){
   return hoursWorkedOnDate(employee,date)*employee.payPerHour;
 }
 
+function allWagesFor(employee){
+  return employee
+}
+
+function findEmployeeByFirstName(srcArray, firstName){
+  return srcArray.find(employee.firstName = firstName);
+}
 function getDateObjFromDateStamp(dateStamp){
   const [date, time] = dateStamp.split(" ");
   const [year, month, day] = date.split("-");
