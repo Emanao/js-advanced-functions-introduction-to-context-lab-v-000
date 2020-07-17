@@ -35,9 +35,9 @@ function createTimeOutEvent(employee, dateStamp){
 }
 
 function hoursWorkedOnDate(employee, date){
-  const timeIn = employee.timeInEvents.find(elem=>elem.date ===date).hour/100;
-  const timeOut = employee.timeOutEvents.find(elem=>elem.date ===date).hour/100;
-  return (timeOut-timeIn);
+  const timeIn = employee.timeInEvents.find(elem=>elem.date ===date).hour;
+  const timeOut = employee.timeOutEvents.find(elem=>elem.date ===date).hour;
+  return (timeOut-timeIn)/100;
 }
 
 function wagesEarnedOnDate(employee, date){
@@ -51,14 +51,9 @@ function allWagesFor(employee){
 }
 
 function findEmployeeByFirstName(employees, firstName){
-  return employees.find(employee.firstName = firstName);
+  return employees.find(employee=>employee.firstName === firstName);
 }
 
-
-function getDateObjFromDateStamp(dateStamp){
-  const [date, time] = dateStamp.split(" ");
-  const [year, month, day] = date.split("-");
-  const [hour, min] = time.split("-");
-  return new Date(Date.UTC(year,month,day,hour,min));
-
+function calculatePayroll(employees){
+  return employees.map((employee) => allWagesFor(employee)).reduce((accu,wage)=>accu += wage);
 }
